@@ -107,20 +107,19 @@ namespace keepr_server.Controllers
 
 
 
-        // //api/vaults/4/keeps
 
-        // [HttpGet("{id}/keeps")]  // NOTE '{}' signifies a var parameter
-        // public ActionResult<IEnumerable<VaultKeepViewModel>> GetKeepsByVaultId(int id)
-        // {
-        //     try
-        //     {
-        //         return Ok(_keepserv.GetKeepsByVaultId(id));
-        //     }
-        //     catch (Exception e)
-        //     {
-        //         return BadRequest(e.Message);
-        //     }
-        // }
+        [HttpGet("{id}/keeps")]  // NOTE '{}' signifies a var parameter
+        public ActionResult<IEnumerable<VaultKeepViewModel>> GetKeepsByVaultId(int id)
+        {
+            try
+            {
+                return Ok(_keepserv.GetKeepsByVaultId(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
 
     }
 }

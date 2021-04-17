@@ -39,18 +39,7 @@ namespace keepr_server.Controllers
             }
         }
 
-        [HttpGet("{id}/keeps")]
-        public ActionResult<IEnumerable<VaultKeepViewModel>> GetKeepsByVaultId(int id)
-        {
-            try
-            {
-                return Ok(_keepserv.GetKeepsByVaultId(id));
-            }
-            catch (System.Exception err)
-            {
-                return BadRequest(err.Message);
-            }
-        }
+
 
         [HttpDelete("{id}")]
         public ActionResult<string> Delete(int id)
