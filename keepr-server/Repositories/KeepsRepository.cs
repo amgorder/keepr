@@ -82,15 +82,15 @@ namespace keepr_server.Repositories
         }
 
 
-        //     internal IEnumerable<ContractorKeepViewModel> GetKeepsByListId(int id)
-        //     {
-        //         string sql = @"SELECT 
-        //   j.*,
-        //   cj.id AS ContractorKeepId
-        //   FROM contractorjobs cj
-        //   JOIN jobs j ON j.id = cj.jobId
-        //   WHERE contractorId = @id;";
-        //         return _db.Query<ContractorKeepViewModel>(sql, new { id });
-        // }
+        internal IEnumerable<VaultKeepViewModel> GetKeepsByVaultId(int id)
+        {
+            string sql = @"SELECT 
+          k.*,
+          vk.id AS VaultKeepId
+          FROM vaultkeeps vk
+          JOIN keeps k ON k.id = vk.keepId
+          WHERE vaultId = @id;";
+            return _db.Query<VaultKeepViewModel>(sql, new { id });
+        }
     }
 }

@@ -63,9 +63,9 @@ namespace keepr_server.Services
             return "delorted";
         }
 
-        // internal IEnumerable<ContractorKeepViewModel> GetKeepsByListId(int id)
-        // {
-        //     return _repo.GetKeepsByListId(id);
-        // }
+        internal IEnumerable<VaultKeepViewModel> GetKeepsByVaultId(int id)
+        {
+            return _repo.GetKeepsByVaultId(id);
+        }
     }
 }
