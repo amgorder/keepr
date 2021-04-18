@@ -5,11 +5,25 @@
       <span class="mx-2 text-white">Vue 3 Starter</span>
     </h1>
   </div>
+  <div class="row">
+    <vault-component />
+  </div>
 </template>
 
 <script>
+import { computed, reactive } from 'vue'
+import VaultComponent from '../components/VaultComponent.vue'
+import { AppState } from '../AppState'
+
 export default {
-  name: 'Home'
+  components: { VaultComponent },
+  name: 'Home',
+  setup() {
+    const state = reactive({
+      vaults: computed(() => AppState.vaults)
+    })
+    return { state }
+  }
 }
 </script>
 
