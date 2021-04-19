@@ -6,22 +6,22 @@
     </h1>
   </div>
   <div class="row">
-    <vault-component />
+    <keep-component />
   </div>
 </template>
 
 <script>
-import { computed, reactive } from 'vue'
-import VaultComponent from '../components/VaultComponent.vue'
+import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
+import { keepsService } from '../services/KeepsService'
 
 export default {
-  components: { VaultComponent },
   name: 'Home',
   setup() {
     const state = reactive({
-      vaults: computed(() => AppState.vaults)
+      keeps: computed(() => AppState.keeps)
     })
+    onMounted(() => keepsService.getKeeps())
     return { state }
   }
 }
