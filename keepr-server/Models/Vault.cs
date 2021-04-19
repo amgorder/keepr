@@ -9,4 +9,10 @@ namespace keepr_server.Models
         public bool IsPrivate { get; set; }
         public Profile Creator { get; set; }
     }
+
+    public class VaultKeepViewModel : Vault
+    {
+        public int VaultKeepId { get; set; }
+
+    }
 }

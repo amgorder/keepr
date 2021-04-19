@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using keepr_server.Models;
 using keepr_server.Repositories;
 
@@ -60,12 +61,14 @@ namespace keepr_server.Services
                 throw new Exception("Invalid Delete Permissions");
             }
             _repo.Delete(id);
-            return "delorted";
+            return "Deleted";
         }
 
         internal IEnumerable<VaultKeepViewModel> GetKeepsByVaultId(int id)
         {
             return _repo.GetKeepsByVaultId(id);
         }
+
+
     }
 }

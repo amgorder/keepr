@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using keepr_server.Models;
 using keepr_server.Repositories;
 
@@ -59,6 +60,17 @@ namespace keepr_server.Services
             }
             _repo.Delete(id);
             return "delorted";
+        }
+
+        internal IEnumerable<VaultKeepViewModel> GetByProfileId(string id)
+        {
+            IEnumerable<VaultKeepViewModel> vaults = _repo.GetVaultsByProfileId(id);
+            return vaults.ToList().FindAll(v => v.IsPrivate);
+        }
+
+        internal IEnumerable<VaultKeepViewModel> GetByAccountId(string id)
+        {
+            return _repo.GetVaultsByProfileId(id);
         }
     }
 }

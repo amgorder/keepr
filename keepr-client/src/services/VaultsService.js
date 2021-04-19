@@ -12,7 +12,7 @@ class VaultsService {
     }
   }
 
-  async getVault(id) {
+  async getVaultsByAccountId(id) {
     try {
       const res = await api.get('api/vaults/' + id)
       console.log(res)
@@ -27,4 +27,4 @@ class VaultsService {
     this.getVaults()
   }
 }
-export const vaultService = new VaultsService()
+export const vaultsService = new VaultsService()

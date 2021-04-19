@@ -36,7 +36,7 @@ namespace keepr_server.Controllers
             }
         }
 
-        [HttpGet("{id}")]  // NOTE '{}' signifies a var parameter
+        [HttpGet("{id}")]
         public ActionResult<Vault> Get(int id)
         {
             try
@@ -52,12 +52,10 @@ namespace keepr_server.Controllers
 
         [HttpPost]
         [Authorize]
-        // NOTE ANYTIME you need to use Async/Await you will return a Task
         public async Task<ActionResult<Vault>> Create([FromBody] Vault newVault)
         {
             try
             {
-                // NOTE HttpContext == 'req'
                 Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
                 newVault.CreatorId = userInfo.Id;
                 newVault.Creator = userInfo;
@@ -76,7 +74,6 @@ namespace keepr_server.Controllers
             try
             {
                 Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
-                //NOTE attach creatorId so you can validate they are the creator of the original
                 updated.CreatorId = userInfo.Id;
                 updated.Creator = userInfo;
                 updated.Id = id;
@@ -95,8 +92,6 @@ namespace keepr_server.Controllers
             try
             {
                 Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
-                //NOTE send userinfo.id so you can validate they are the creator of the original
-
                 return Ok(_service.Delete(id, userInfo.Id));
             }
             catch (Exception e)
@@ -105,10 +100,7 @@ namespace keepr_server.Controllers
             }
         }
 
-
-
-
-        [HttpGet("{id}/keeps")]  // NOTE '{}' signifies a var parameter
+        [HttpGet("{id}/keeps")]
         public ActionResult<IEnumerable<VaultKeepViewModel>> GetKeepsByVaultId(int id)
         {
             try
@@ -120,6 +112,5 @@ namespace keepr_server.Controllers
                 return BadRequest(e.Message);
             }
         }
-
     }
 }
