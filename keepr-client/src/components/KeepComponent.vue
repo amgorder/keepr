@@ -1,5 +1,6 @@
 <template>
   <div class="keepComponent col-3">
+    <!-- not getting my keep info -->
     <h3>{{ keepProp }}</h3>
     HeLLo WorLd
   </div>

@@ -33,7 +33,7 @@ namespace keepr_server.Controllers
             }
         }
 
-        [HttpGet("{id}")]  // NOTE '{}' signifies a var parameter
+        [HttpGet("{id}")]
         public ActionResult<Keep> Get(int id)
         {
             try
@@ -49,12 +49,12 @@ namespace keepr_server.Controllers
 
         [HttpPost]
         [Authorize]
-        // NOTE ANYTIME you need to use Async/Await you will return a Task
+
         public async Task<ActionResult<Keep>> Create([FromBody] Keep newKeep)
         {
             try
             {
-                // NOTE HttpContext == 'req'
+
                 Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
                 newKeep.CreatorId = userInfo.Id;
                 newKeep.Creator = userInfo;
