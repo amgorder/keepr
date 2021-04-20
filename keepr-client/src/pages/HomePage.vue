@@ -5,7 +5,7 @@
       <span class="mx-2 text-white">Vue 3 Starter</span>
     </h1>
   </div> -->
-  <div class="row">
+  <div class="row justify-content-center">
     <keep-component v-for="k in state.keeps" :key="k.id" :keep-prop="k" />
     Keeps
   </div>
