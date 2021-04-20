@@ -1,7 +1,7 @@
 <template>
   <div class="grid">
-    <div class="keepComponent card bg-img grid-item grid-item--width2">
-      <img class="card" :src="keepProp.img" alt="">
+    <div class="keepComponent card grid-item--width2 " :style="{ backgroundImage: `url('${keepProp.img}')`, backgroundSize: 'contain' , backgroundRepeat: 'no-repeat'}">
+      <!-- <img class="card" :src="keepProp.img" alt=""> -->
       <h3>{{ keepProp.name }}<img class="m-3 justify-content-right pic" :src="keepProp.creator.picture" alt=""></h3>
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -18,7 +18,7 @@
        aria-labelledby="exampleModalLabel"
        aria-hidden="true"
   >
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">
@@ -29,10 +29,19 @@
           </button>
         </div>
         <div class="modal-body">
-          <img class="card" :src="keepProp.img" alt="">
-
-          <p>{{ keepProp.description }}</p>
-          <img class="m-3 justify-content-right pic" :src="keepProp.creator.picture" alt="">
+          <div class="row">
+            <div class="col">
+              <img class="card img-fluid" :src="keepProp.img" alt="">
+            </div>
+            <div class="col">
+              <p>{{ keepProp.description }}</p>
+              Views: {{ keepProp.views }}
+              Share: {{ keepProp.shares }}
+              Keeps: {{ keepProp.keeps }}
+              <br>
+              <img class="m-3 justify-content-right pic" :src="keepProp.creator.picture" alt="">
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -63,15 +72,15 @@ export default {
 </script>
 
 <style scoped>
-.grid-item { width: 200px; }
+.grid-item { width: 100px; }
 .grid-item--width2 { width: 400px; }
 
-.card {
-  /* height: 200px;
-  width: 100px; */
+/* .card {
+  height: auto;
+width: auto;
   padding: 3px;
   margin: 3px;
-}
+} */
 
 /* .bg-img{
   background-image: url("keepProp.img");
