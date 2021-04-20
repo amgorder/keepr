@@ -40,7 +40,7 @@ export default {
   display: inline-block;
   padding: 4px;
 
-  background: linear-gradient(130deg, rgb(187, 9, 241), rgb(6, 228, 236));
+  background: linear-gradient(130deg,  hsl(150, 99%, 48%), hsl(275, 99%, 48%));
   object-fit: cover;
   margin: auto;
   border-radius: 50%;

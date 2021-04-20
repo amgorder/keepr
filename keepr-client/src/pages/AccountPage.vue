@@ -1,10 +1,9 @@
 <template>
   <div class="about container-fluid">
-    <div class="row justify-content-center">
+    <div class="row mb-5">
       <div class="col-6">
         <h1>Welcome {{ state.account.name }} !</h1>
-        <img class="rounded" :src="state.account.picture" alt="" />
-        <p>{{ state.account.email }}</p>
+        <img class="pic" :src="state.account.picture" alt="" />
       </div>
     </div>
     <div class="row">
@@ -59,9 +58,9 @@
       *Vaults will go here
     </div>
     <br>
-    <div class="row">
-      <keep-component v-for="k in state.keep" :key="k.id" :vault-prop="k" />
-      *Keeps will go here
+    <div class="row justify-content-center">
+      *Keeps need to filter on creator id
+      <keep-component v-for="k in state.keeps" :key="k.id" :keep-prop="k" />
     </div>
   </div>
 </template>
@@ -94,6 +93,19 @@ export default {
 <style scoped>
 img {
   max-width: 100px;
+}
+
+.pic{
+  display: inline-block;
+  padding: 4px;
+
+  background: linear-gradient(130deg, hsl(150, 99%, 48%), hsl(275, 99%, 48%));
+  object-fit: cover;
+  margin: auto;
+  border-radius: 50%;
+  width: 100px;
+  height:100px;
+  box-shadow: 6px,6px,12px,16px black;
 }
 
 .border-wrap{

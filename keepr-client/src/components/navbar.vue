@@ -1,12 +1,12 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg color">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img
+        <!-- <img
           alt="logo"
           src="../assets/img/cw-logo.png"
           height="45"
-        />
+        /> -->
       </div>
     </router-link>
     <button
@@ -103,6 +103,9 @@ export default {
 </script>
 
 <style scoped>
+.color{
+  background: hsl(150, 99%, 48%);
+}
 .dropdown-menu {
   user-select: none;
   display: block;

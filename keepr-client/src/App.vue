@@ -6,8 +6,8 @@
     <router-view />
   </main>
   <footer>
-    <div class="bg-dark text-light text-center p-4">
-      Made with 💖 by CodeWorks
+    <div class="color text text-center p-4">
+      Stay Golden
     </div>
   </footer>
 </template>
@@ -25,6 +25,14 @@ export default {
 }
 </script>
 <style lang="scss">
+.color{
+  background: hsl(150, 99%, 48%);
+}
+
+.text{
+  color: hsl(50, 99%, 48%);
+}
+
 @import "./assets/scss/main.scss";
 
 </style>
