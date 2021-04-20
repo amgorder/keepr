@@ -1,7 +1,11 @@
 <template>
-  <div class="keepComponent text-center col-3 card m-2">
-    <img class="card-img-center mt-3 pic d-flex justify-content-center" :src="keepProp.img" alt="">
-    <h3>{{ keepProp.name }}</h3>
+  <div class="container-fluid">
+    <div class="keepComponent text-center col-3 card m-2">
+      <img class="card" :src="keepProp.img" alt="">
+      <h3>{{ keepProp.name }}</h3>
+      <!-- <p>{{ keepProp.creator.picture }}</p> -->
+      <img class="card-img-center mt-3 pic d-flex justify-content-center" :src="keepProp.creator.picture" alt="">
+    </div>
   </div>
 </template>
 
@@ -25,10 +29,10 @@ export default {
 
 <style scoped>
 
-.card {
+/* .card {
   height: 20em;
   width: 10em;
-}
+} */
 .pic{
   display: inline-block;
   padding: 8px;
