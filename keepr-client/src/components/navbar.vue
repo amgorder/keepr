@@ -92,7 +92,7 @@ export default {
       state,
       user: computed(() => AppState.user),
       async login() {
-        AuthService.loginWithPopup()
+        AuthService.loginWithRedirect()
       },
       async logout() {
         await AuthService.logout({ returnTo: window.location.origin })

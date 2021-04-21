@@ -1,6 +1,6 @@
 <template>
-  <div class="row justify-content-center">
-    <keep-component v-for="k in state.keeps" :key="k.id" :keep-prop="k" />
+  <div class="grid" data-masonry="{ itemSelector: &quot;.grid-item&quot;, &quot;columnWidth&quot;: 200 }">
+    <keep-component v-for="k in state.keeps" :key="k.id" :keep-prop="k" class="keep-component" />
     Keeps
   </div>
 </template>
@@ -22,13 +22,27 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-.home{
-  text-align: center;
-  user-select: none;
-  > img{
-    height: 200px;
-    width: 200px;
-  }
-}
+<style lang="scss">
+
+.keep-component {
+  height: 10rem;
+  width: 12rem;
+  padding: 3px;
+  margin: 3px;
+  display: inline-block;
+ }
+
+.keep-component:nth-child(2n) {
+  height: 20rem !important;
+  width: 12rem !important;
+ }
+
+.keep-component:nth-child(3n) {
+  height: 18rem !important;
+  width: 12rem !important;
+ }
+.keep-component:nth-child(4n) {
+  height: 15rem !important;
+  width: 12rem !important;
+ }
 </style>

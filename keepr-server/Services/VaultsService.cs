@@ -59,18 +59,13 @@ namespace keepr_server.Services
                 throw new Exception("Invalid Delete Permissions");
             }
             _repo.Delete(id);
-            return "delorted";
+            return "deleted";
         }
 
-        internal IEnumerable<VaultKeepViewModel> GetByProfileId(string id)
-        {
-            IEnumerable<VaultKeepViewModel> vaults = _repo.GetVaultsByProfileId(id);
-            return vaults.ToList().FindAll(v => v.IsPrivate);
-        }
-
-        internal IEnumerable<VaultKeepViewModel> GetByAccountId(string id)
-        {
-            return _repo.GetVaultsByProfileId(id);
-        }
+     internal object GetVaultsByProfileId(string id)
+    {
+      IEnumerable<Vault> vaults = _repo.GetByProfileId(id);
+      return vaults.ToList().FindAll(v => v.IsPrivate);
+    }
     }
 }
