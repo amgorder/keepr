@@ -85,7 +85,7 @@ namespace keepr_server.Repositories
 
 
 
-        internal IEnumerable<Vault> GetByProfileId(string id)
+        internal List<Vault> GetByProfileId(string id)
         {
             string sql = @"
       SELECT 
@@ -98,7 +98,7 @@ namespace keepr_server.Repositories
             {
                 vault.Creator = profile;
                 return vault;
-            }, new { id }, splitOn: "id");
+            }, new { id }, splitOn: "id").ToList();
         }
     }
 

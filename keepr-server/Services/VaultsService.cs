@@ -62,10 +62,11 @@ namespace keepr_server.Services
             return "deleted";
         }
 
-     internal object GetVaultsByProfileId(string id)
-    {
-      IEnumerable<Vault> vaults = _repo.GetByProfileId(id);
-      return vaults.ToList().FindAll(v => v.IsPrivate);
-    }
+        internal List<Vault> GetVaultsByProfileId(string id)
+        {
+            var vaults = _repo.GetByProfileId(id);
+            return vaults.FindAll(v => v.IsPrivate);
+        }
+
     }
 }

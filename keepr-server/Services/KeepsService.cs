@@ -68,7 +68,11 @@ namespace keepr_server.Services
         {
             return _repo.GetKeepsByVaultId(id);
         }
-
+        internal List<Keep> GetKeepsByProfileId(string id)
+        {
+            var keeps = _repo.GetByProfileId(id);
+            return keeps;
+        }
 
     }
 }
