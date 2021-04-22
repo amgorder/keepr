@@ -12,14 +12,10 @@ class VaultsService {
     }
   }
 
-  async getVaultsByAccountId(id) {
-    try {
-      const res = await api.get('api/vaults/' + id)
-      console.log(res)
-      AppState.activeVault = res.data
-    } catch (error) {
-      console.error(error)
-    }
+  async getVaultsByAccountId() {
+    const res = await api.get('account/vaults')
+    console.log(res)
+    AppState.vaults = res.data
   }
 
   async createVault(vault) {

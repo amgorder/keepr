@@ -68,5 +68,10 @@ namespace keepr_server.Services
             return vaults.FindAll(v => v.IsPrivate);
         }
 
+        internal IEnumerable<Vault> GetVaultsByAccountId(string id)
+        {
+            return _repo.GetByCreatorId(id);
+        }
+
     }
 }
