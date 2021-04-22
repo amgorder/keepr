@@ -3,7 +3,10 @@
     <div data-toggle="modal" :data-target="'#keep-'+keepProp.id" class="keepComponent card text-light h-100 w-100 " :style="{ backgroundImage: `url('${keepProp.img}')`, backgroundSize: 'cover' , backgroundRepeat: 'no-repeat'}">
       <h3>
         {{ keepProp.name }}
-        <img class="m-3 justify-content-right pic" :src="keepProp.creator.picture" alt="">
+        <!-- TODO add pointer css  -->
+        <div class="text-dark" @click.stop="gotoprofile">
+          <img class="m-3 justify-content-right pic" :src="keepProp.creator.picture" alt="">
+        </div>
       </h3>
     </div>
 
@@ -36,7 +39,9 @@
                 Share: {{ keepProp.shares }}
                 Keeps: {{ keepProp.keeps }}
                 <br>
-                <img class="m-3 justify-content-right pic" :src="keepProp.creator.picture" alt="">
+                <router-link class="text-dark" :to="{name: 'ProfilePage', params: {id : keepProp.id}}">
+                  <img class="m-3 justify-content-right pic" :src="keepProp.creator.picture" alt="">
+                </router-link>
                 <i class="fa fa-trash text-danger" data-dismiss="modal" @click="deleteKeep" v-if="keepProp.creatorId == state.account.id" aria-hidden="true"></i>
               </div>
             </div>
@@ -69,6 +74,7 @@
 import { computed, reactive } from 'vue'
 import { keepsService } from '../services/KeepsService'
 import { AppState } from '../AppState'
+import { useRouter } from 'vue-router'
 export default {
   name: 'KeepComponent',
   props: {
@@ -78,14 +84,19 @@ export default {
     }
   },
   setup(props) {
+    const router = useRouter()
     const state = reactive({
       account: computed(() => AppState.account)
     })
     return {
+
       state,
       deleteKeep() {
         confirm('Are you sure?')
         keepsService.deleteKeep(props.keepProp.id)
+      },
+      gotoprofile() {
+        router.push({ name: 'ProfilePage', params: { id: props.keepProp.creatorId } })
       }
     }
   }

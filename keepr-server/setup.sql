@@ -25,7 +25,7 @@ USE keeprvault333;
 --    REFERENCES profiles (id)
 --    ON DELETE CASCADE
 -- );
-
+--  TRUNCATE TABLE vaults;
 -- CREATE TABLE vaults 
 -- ( 
 --   id INT NOT NULL AUTO_INCREMENT, 
