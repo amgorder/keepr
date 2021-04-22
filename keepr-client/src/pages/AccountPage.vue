@@ -8,9 +8,12 @@
     </div>
     <div class="row">
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary border-wrap" data-toggle="modal" data-target="#keepModalCenter">
-        + KEEP
-      </button>
+      <div>
+        <button type="button" class="btn btn-primary border-wrap" data-toggle="modal" data-target="#keepModalCenter">
+          <span></span><span></span><span></span><span></span>
+          + KEEP
+        </button>
+      </div>
 
       <!-- Modal -->
       <div class="modal fade"
@@ -50,9 +53,12 @@
       </div>
 
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary border-wrap" data-toggle="modal" data-target="#vaultModalCenter">
-        + VAULT
-      </button>
+      <div>
+        <button type="button" class="btn btn-primary border-wrap" data-toggle="modal" data-target="#vaultModalCenter">
+          <span></span><span></span><span></span><span></span>
+          + VAULT
+        </button>
+      </div>
 
       <!-- Modal -->
       <div class="modal fade"
@@ -73,9 +79,12 @@
               </button>
             </div>
             <div class="modal-body">
-              ...
               <form @submit.prevent="createVault">
                 <input class="m-3" type="text" v-model="state.newVault.name" placeholder="Enter a name">
+                <input class="m-3" type="text" v-model="state.newVault.img" placeholder="Enter a image">
+                <label class="btn btn-primary">
+                  <input type="checkbox" autocomplete="off"> Public
+                </label>
               </form>
             </div>
             <div class="modal-footer">
@@ -114,7 +123,13 @@ import { keepsService } from '../services/KeepsService'
 import { vaultsService } from '../services/VaultsService'
 export default {
   name: 'Account',
-  setup() {
+  props: {
+    keepProp: {
+      type: Object,
+      required: true
+    }
+  },
+  setup(props) {
     const state = reactive({
       account: computed(() => AppState.account),
       keeps: computed(() => AppState.keeps),
@@ -135,9 +150,11 @@ export default {
         vaultsService.createVault(state.newVault)
         state.newVault = {}
       }
+
     }
   }
 }
+
 </script>
 
 <style scoped>

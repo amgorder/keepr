@@ -37,13 +37,27 @@
                 Keeps: {{ keepProp.keeps }}
                 <br>
                 <img class="m-3 justify-content-right pic" :src="keepProp.creator.picture" alt="">
+                <i class="fa fa-trash text-danger" data-dismiss="modal" @click="deleteKeep" v-if="keepProp.creatorId == state.account.id" aria-hidden="true"></i>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-              Close
-            </button>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+              >
+                Dropdown button
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -52,7 +66,9 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { computed, reactive } from 'vue'
+import { keepsService } from '../services/KeepsService'
+import { AppState } from '../AppState'
 export default {
   name: 'KeepComponent',
   props: {
@@ -61,12 +77,20 @@ export default {
       required: true
     }
   },
-  setup() {
+  setup(props) {
     const state = reactive({
+      account: computed(() => AppState.account)
     })
-    return { state }
+    return {
+      state,
+      deleteKeep() {
+        confirm('Are you sure?')
+        keepsService.deleteKeep(props.keepProp.id)
+      }
+    }
   }
 }
+
 </script>
 
 <style>
