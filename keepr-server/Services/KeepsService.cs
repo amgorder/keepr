@@ -64,6 +64,11 @@ namespace keepr_server.Services
             return "Deleted";
         }
 
+        internal IEnumerable<Keep> GetKeepsByAccountId(string id)
+        {
+            return _repo.GetByCreatorId(id);
+        }
+
         internal IEnumerable<VaultKeepViewModel> GetKeepsByVaultId(int id)
         {
             return _repo.GetKeepsByVaultId(id);

@@ -1,29 +1,29 @@
 <template>
   <div class="about container-fluid">
     <div class="row mb-5">
-      <div class="col-6">
-        <h1>Welcome {{ state.account.name }} !</h1>
+      <div class="col-6" v-if="!state.loading && state.account.name">
+        <h1>Welcome {{ state.account.name.includes('@') ? state.account.name.split('@')[0] : state.account.name }} !</h1>
         <img class="pic" :src="state.account.picture" alt="" />
       </div>
     </div>
     <div class="row">
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary border-wrap" data-toggle="modal" data-target="#exampleModalCenter">
+      <button type="button" class="btn btn-primary border-wrap" data-toggle="modal" data-target="#keepModalCenter">
         + KEEP
       </button>
 
       <!-- Modal -->
       <div class="modal fade"
-           id="exampleModalCenter"
+           id="keepModalCenter"
            tabindex="-1"
            role="dialog"
-           aria-labelledby="exampleModalCenterTitle"
+           aria-labelledby="keepModalCenterTitle"
            aria-hidden="true"
       >
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">
+              <h5 class="modal-title" id="keepModalLongTitle">
                 New Keep:
               </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -49,18 +49,61 @@
         </div>
       </div>
 
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary border-wrap" data-toggle="modal" data-target="#vaultModalCenter">
+        + VAULT
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade"
+           id="vaultModalCenter"
+           tabindex="-1"
+           role="dialog"
+           aria-labelledby="vaultModalCenterTitle"
+           aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="vaultModalLongTitle">
+                New Vault:
+              </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+              <form @submit.prevent="createVault">
+                <input class="m-3" type="text" v-model="state.newVault.name" placeholder="Enter a name">
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Create Vault
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="col p-3">
       </div>
     </div>
     <br>
     <div class="row">
-      <vault-component v-for="v in state.vault" :key="v.id" :vault-prop="v" />
-      *Vaults will go here
+      <h1>VAULTS</h1>
+      <vault-component v-for="v in state.vaults" :key="v.id" :vault-prop="v" class="vault-component" />
     </div>
     <br>
-    <div class="row justify-content-center">
-      *Keeps need to filter on creator id
-      <keep-component v-for="k in state.keeps" :key="k.id" :keep-prop="k" />
+    <div>
+      <div class="grid" data-masonry="{ itemSelector: &quot;.grid-item&quot;, &quot;columnWidth&quot;: 200 }">
+        <h1>KEEPS</h1>
+        <keep-component v-for="k in state.keeps" :key="k.id" :keep-prop="k" class="keep-component" />
+      </div>
     </div>
   </div>
 </template>
@@ -74,16 +117,23 @@ export default {
   setup() {
     const state = reactive({
       account: computed(() => AppState.account),
+      keeps: computed(() => AppState.keeps),
       vaults: computed(() => AppState.vaults),
-      newKeep: {}
-
+      newKeep: {},
+      newVault: {}
     })
+    onMounted(() => keepsService.getKeepsByAccountId())
     onMounted(() => vaultsService.getVaultsByAccountId())
+
     return {
       state,
       createKeep() {
         keepsService.createKeep(state.newKeep)
         state.newKeep = {}
+      },
+      createVault() {
+        vaultsService.createVault(state.newVault)
+        state.newVault = {}
       }
     }
   }
@@ -173,4 +223,26 @@ img {
   transition: 1s;
   transition-delay: 0.75s;
 }
+
+.keep-component {
+  height: 10rem;
+  width: 12rem;
+  padding: 3px;
+  margin: 3px;
+  display: inline-block;
+ }
+
+.keep-component:nth-child(2n) {
+  height: 20rem !important;
+  width: 12rem !important;
+ }
+
+.keep-component:nth-child(3n) {
+  height: 18rem !important;
+  width: 12rem !important;
+ }
+.keep-component:nth-child(4n) {
+  height: 15rem !important;
+  width: 12rem !important;
+ }
 </style>

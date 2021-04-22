@@ -22,6 +22,12 @@ class KeepsService {
     }
   }
 
+  async getKeepsByAccountId() {
+    const res = await api.get('account/keeps')
+    console.log(res)
+    AppState.keeps = res.data
+  }
+
   async createKeep(keep) {
     await api.post('api/keeps', keep)
     this.getKeeps()

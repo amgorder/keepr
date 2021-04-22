@@ -1,7 +1,6 @@
 <template>
   <div class="grid" data-masonry="{ itemSelector: &quot;.grid-item&quot;, &quot;columnWidth&quot;: 200 }">
     <keep-component v-for="k in state.keeps" :key="k.id" :keep-prop="k" class="keep-component" />
-    Keeps
   </div>
 </template>
 
