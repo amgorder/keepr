@@ -29,8 +29,10 @@ class KeepsService {
   }
 
   async createKeep(keep) {
-    await api.post('api/keeps', keep)
-    this.getKeeps()
+    const res = await api.post('api/keeps', keep)
+    console.log(res)
+    AppState.keeps = [res.data, ...AppState.keeps]
+    // this.getVaultKeeps(keep.vaultId)
   }
 
   async deleteKeep(keepId) {

@@ -34,18 +34,18 @@
               </button>
             </div>
             <div class="modal-body">
-              ...
               <form @submit.prevent="createKeep">
                 <input class="m-3" type="text" v-model="state.newKeep.name" placeholder="Enter a name">
                 <input class="m-3" type="text" v-model="state.newKeep.img" placeholder="Enter a img">
+                <input class="m-3" type="text" v-model="state.newKeep.description" placeholder="Enter a description">
+                <button type="submit" class="btn btn-primary">
+                  Create Keep
+                </button>
               </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">
                 Close
-              </button>
-              <button type="submit" class="btn btn-primary">
-                Create Keep
               </button>
             </div>
           </div>
