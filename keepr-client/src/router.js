@@ -21,6 +21,12 @@ const routes = [
     name: 'Account',
     component: loadPage('AccountPage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/vaultpage',
+    name: 'VaultPage',
+    component: loadPage('VaultPage'),
+    beforeEnter: authGuard
   }
 ]
 

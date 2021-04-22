@@ -1,11 +1,13 @@
 <template>
   <div class="grid-item">
-    <div class="vaultComponent card text-light h-100 w-100 " :style="{ backgroundImage: `url('${vaultProp.img}')`, backgroundSize: 'cover' , backgroundRepeat: 'no-repeat'}">
-      <h3>
-        {{ vaultProp.name }}
-        <img class="m-3 justify-content-right pic" :src="vaultProp.creator.picture" alt="">
-      </h3>
-    </div>
+    <router-link class="text-dark" :to="{name: 'VaultPage', params: {vaultId : vaultProp.id}}">
+      <div class="vaultComponent card text-light h-100 w-100 " :style="{ backgroundImage: `url('${vaultProp.img}')`, backgroundSize: 'cover' , backgroundRepeat: 'no-repeat'}">
+        <h3>
+          {{ vaultProp.name }}
+          <img class="m-3 justify-content-right pic" :src="vaultProp.creator.picture" alt="">
+        </h3>
+      </div>
+    </router-link>
   </div>
 </template>
 
