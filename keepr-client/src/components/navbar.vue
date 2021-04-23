@@ -107,7 +107,7 @@ export default {
   background: hsl(150, 99%, 48%);
 }
 .toggle{
-  background: hsla(275, 99%, 48%, 0.74);
+  background: #d4af37;
 }
 .dropdown-menu {
   user-select: none;

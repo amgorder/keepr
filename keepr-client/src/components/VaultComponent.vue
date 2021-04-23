@@ -1,10 +1,9 @@
 <template>
   <div class="grid-item">
     <router-link class="text-dark" :to="{name: 'VaultPage', params: {vaultId : vaultProp.id}}">
-      <div class="vaultComponent card text-light h-100 w-100 " :style="{ backgroundImage: `url('${vaultProp.img}')`, backgroundSize: 'cover' , backgroundRepeat: 'no-repeat'}">
+      <div class="vaultComponent card text-dark h-100 w-100 " :style="{ backgroundImage: `url('${vaultProp.img}')`, backgroundSize: 'cover' , backgroundRepeat: 'no-repeat'}">
         <h3>
           {{ vaultProp.name }}
-          <img class="m-3 justify-content-right pic" :src="vaultProp.creator.picture" alt="">
         </h3>
       </div>
     </router-link>
@@ -12,7 +11,9 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { computed, reactive } from 'vue'
+import { AppState } from '../AppState'
+import { vaultsService } from '../services/VaultsService'
 export default {
   name: 'VaultComponent',
   props: {
@@ -21,10 +22,17 @@ export default {
       required: true
     }
   },
-  setup() {
+  setup(props) {
     const state = reactive({
+      account: computed(() => AppState.account)
     })
-    return { state }
+    return {
+      state,
+      // delete in the vault page
+      deleteVault() {
+        vaultsService.deleteVault(props.vaultProp.id)
+      }
+    }
   }
 }
 </script>

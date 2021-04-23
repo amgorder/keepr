@@ -52,14 +52,15 @@ namespace keepr_server.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Vault>> Create([FromBody] Vault newVault)
+        public async Task<ActionResult<Vault>> Post([FromBody] Vault newVault)
         {
             try
             {
                 Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
                 newVault.CreatorId = userInfo.Id;
-                newVault.Creator = userInfo;
-                return Ok(_service.Create(newVault));
+                Vault created = _service.Create(newVault);
+                created.Creator = userInfo;
+                return Ok(created);
             }
             catch (Exception e)
             {

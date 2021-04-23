@@ -30,11 +30,11 @@ namespace keepr_server.Services
             return data;
         }
 
-        internal Vault Create(Vault newVault)
+        public Vault Create(Vault newVault)
         {
-            return _repo.Create(newVault);
+            newVault.Id = _repo.Create(newVault);
+            return newVault;
         }
-
         internal Vault Edit(Vault updated)
         {
             var original = GetById(updated.Id);

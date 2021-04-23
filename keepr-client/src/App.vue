@@ -26,14 +26,14 @@ export default {
 </script>
 <style lang="scss">
 .color{
-  background: hsla(150, 99%, 48%, 0.301);
+  background:  hsl(60, 1%, 15%);
 }
 
 .text{
-  color: hsl(50, 99%, 48%);
+  color: hsl(46, 65%, 52%);
 }
 .toggle{
-  background: hsla(275, 99%, 48%, 0.74);
+  background:  #d4af37;
 }
 @import "./assets/scss/main.scss";
 

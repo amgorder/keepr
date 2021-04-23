@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-item col col-md-3">
+  <div class="grid-item col round col-md-3">
     <div data-toggle="modal" :data-target="'#keep-'+keepProp.id" class="keepComponent card text-light h-100 w-100 " :style="{ backgroundImage: `url('${keepProp.img}')`, backgroundSize: 'cover' , backgroundRepeat: 'no-repeat'}">
       <h3>
         {{ keepProp.name }}
@@ -122,12 +122,17 @@ export default {
   display: inline-block;
   padding: 4px;
 
-  background: linear-gradient(130deg,  hsl(150, 99%, 48%), hsl(150, 99%, 48%));
+  background: linear-gradient(130deg, hsl(44, 98%, 50%), hsl(44, 98%, 25%));
   object-fit: cover;
   margin: auto;
   border-radius: 50%;
   width: 50px;
   height:50px;
   box-shadow: 6px,6px,12px,16px black;
+}
+
+.round{
+  border-color: hsl(44, 98%, 25%);
+  border-radius: 5px;
 }
 </style>

@@ -51,18 +51,30 @@ namespace keepr_server.Repositories
             }, new { id }, splitOn: "id").FirstOrDefault();
         }
 
-        internal Vault Create(Vault newVault)
+        // internal Vault Create(Vault newVault)
+        // {
+        //     string sql = @"
+        //   INSERT INTO vaults 
+        //   (name, description, isPrivate, creatorId) 
+        //   VALUES 
+        //   (@Name, @Description, @IsPrivate, @CreatorId);
+        //   SELECT LAST_INSERT_ID();";
+        //     int id = _db.ExecuteScalar<int>(sql, newVault);
+        //     newVault.Id = id;
+        //     return newVault;
+        // }
+
+        internal int Create(Vault VaultData)
         {
             string sql = @"
-      INSERT INTO vaults 
-      (name, description, isPrivate, creatorId) 
-      VALUES 
-      (@Name, @Description, @IsPrivate, @creatorId);
-      SELECT LAST_INSERT_ID();";
-            int id = _db.ExecuteScalar<int>(sql, newVault);
-            newVault.Id = id;
-            return newVault;
+          INSERT INTO vaults 
+          (name, description, isPrivate, creatorId) 
+          VALUES 
+          (@Name, @Description, @IsPrivate, @CreatorId);
+          SELECT LAST_INSERT_ID();";
+            return _db.ExecuteScalar<int>(sql, VaultData);
         }
+
 
         internal Vault Edit(Vault updated)
         {

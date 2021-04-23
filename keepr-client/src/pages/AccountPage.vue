@@ -1,5 +1,5 @@
 <template>
-  <div class="about container-fluid">
+  <div class="about container-fluid text-light">
     <div class="row mb-5">
       <div class="col-6" v-if="!state.loading && state.account.name">
         <h1>Welcome {{ state.account.name.includes('@') ? state.account.name.split('@')[0] : state.account.name }} to your Account Page!</h1>
@@ -8,12 +8,14 @@
     </div>
     <div class="row">
       <!-- Button trigger modal -->
-      <div>
-        <button type="button" class="btn btn-primary border-wrap" data-toggle="modal" data-target="#keepModalCenter">
-          <span></span><span></span><span></span><span></span>
-          + KEEP
-        </button>
-      </div>
+
+      <button type="button" class="btn border-wrap d-flex ml-1" data-toggle="modal" data-target="#keepModalCenter">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        + KEEP
+      </button>
 
       <!-- Modal -->
       <div class="modal fade"
@@ -54,8 +56,11 @@
 
       <!-- Button trigger modal -->
       <div>
-        <button type="button" class="btn btn-primary border-wrap" data-toggle="modal" data-target="#vaultModalCenter">
-          <span></span><span></span><span></span><span></span>
+        <button type="button" class="btn border-wrap d-flex ml-1" data-toggle="modal" data-target="#vaultModalCenter">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
           + VAULT
         </button>
       </div>
@@ -81,18 +86,19 @@
             <div class="modal-body">
               <form @submit.prevent="createVault">
                 <input class="m-3" type="text" v-model="state.newVault.name" placeholder="Enter a name">
-                <input class="m-3" type="text" v-model="state.newVault.img" placeholder="Enter a image">
-                <label class="btn btn-primary">
+                <input class="m-3" type="text" v-model="state.newVault.description" placeholder="Enter a description">
+
+                <label class="btn">
                   <input type="checkbox" autocomplete="off"> Public
                 </label>
+                <button type="submit" class="btn btn-primary">
+                  Create Vault
+                </button>
               </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">
                 Close
-              </button>
-              <button type="submit" class="btn btn-primary">
-                Create Vault
               </button>
             </div>
           </div>
@@ -171,7 +177,7 @@ img {
   display: inline-block;
   padding: 4px;
 
-  background: linear-gradient(130deg, hsl(150, 99%, 48%), hsl(275, 99%, 48%));
+  background: linear-gradient(130deg, hsl(44, 98%, 50%), hsl(44, 98%, 25%));
   object-fit: cover;
   margin: auto;
   border-radius: 50%;
@@ -187,9 +193,9 @@ img {
 }
 
 .border-wrap:hover{
-  color: #aa50e2;
-  background: rgba(0, 255, 255, 0.63);
-  box-shadow: 0 0 10px aqua, 0 0 40px rgba(121, 252, 252, 0.76), 0 0 80px aqua;
+  color: hsl(275, 99%, 48%);
+  background: hsl(150, 99%, 48%);
+  box-shadow: 0 0 10px hsl(150, 99%, 48%), 0 0 40px hsl(150, 99%, 48%), 0 0 80px hsl(150, 99%, 48%);
   transition-delay: 1s;
 
 }
@@ -202,7 +208,7 @@ img {
   left: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg,transparent,#aa50e2);
+  background: linear-gradient(90deg,transparent,hsl(275, 99%, 48%));
 }
 .border-wrap:hover span:nth-child(1){
   left: 100%;
@@ -213,7 +219,7 @@ img {
   right: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(270deg,transparent,#aa50e2);
+  background: linear-gradient(270deg,transparent,hsl(275, 99%, 48%));
 }
 .border-wrap:hover span:nth-child(3){
   right: 100%;
@@ -226,7 +232,7 @@ img {
   right: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg,transparent,#aa50e2);
+  background: linear-gradient(180deg,transparent,hsl(275, 99%, 48%));
 }
 .border-wrap:hover span:nth-child(2){
   top: 100%;
@@ -238,7 +244,7 @@ img {
   left: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(360deg,transparent,#aa50e2);
+  background: linear-gradient(360deg,transparent,hsl(275, 99%, 48%));
 }
 .border-wrap:hover span:nth-child(4){
   bottom: 100%;
