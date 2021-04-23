@@ -2,7 +2,7 @@
   <div class="about container-fluid">
     <div class="row mb-5">
       <div class="col-6" v-if="!state.loading && state.account.name">
-        <h1>Welcome {{ state.account.name.includes('@') ? state.account.name.split('@')[0] : state.account.name }} !</h1>
+        <h1>Welcome {{ state.account.name.includes('@') ? state.account.name.split('@')[0] : state.account.name }} to your Account Page!</h1>
         <img class="pic" :src="state.account.picture" alt="" />
       </div>
     </div>
@@ -23,7 +23,7 @@
            aria-labelledby="keepModalCenterTitle"
            aria-hidden="true"
       >
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="keepModalLongTitle">
@@ -68,7 +68,7 @@
            aria-labelledby="vaultModalCenterTitle"
            aria-hidden="true"
       >
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="vaultModalLongTitle">
@@ -158,6 +158,11 @@ export default {
 </script>
 
 <style scoped>
+.vault {
+  height: 100px;
+  width: 100px;
+}
+
 img {
   max-width: 100px;
 }

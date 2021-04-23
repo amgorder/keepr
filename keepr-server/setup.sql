@@ -1,4 +1,6 @@
 USE keeprvault333;
+-- TRUNCATE TABLE vaults;
+-- DROP TABLE vaults;
 
 -- CREATE TABLE profiles
 -- (
@@ -25,7 +27,7 @@ USE keeprvault333;
 --    REFERENCES profiles (id)
 --    ON DELETE CASCADE
 -- );
---  TRUNCATE TABLE vaults;
+
 -- CREATE TABLE vaults 
 -- ( 
 --   id INT NOT NULL AUTO_INCREMENT, 

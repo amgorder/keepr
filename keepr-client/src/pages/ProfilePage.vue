@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="row">
-      <keep-component v-for="k in state.keeps" :key="k.id" :keep-prop="k" />
+      <keep-component class="keep-component" v-for="k in state.keeps" :key="k.id" :keep-prop="k" />
     </div>
   </div>
 </template>
@@ -39,4 +39,26 @@ export default {
 </script>
 
 <style scoped>
+
+.keep-component {
+  height: 10rem;
+  width: 12rem;
+  padding: 3px;
+  margin: 3px;
+  display: inline-block;
+ }
+
+.keep-component:nth-child(2n) {
+  height: 20rem !important;
+  width: 12rem !important;
+ }
+
+.keep-component:nth-child(3n) {
+  height: 18rem !important;
+  width: 12rem !important;
+ }
+.keep-component:nth-child(4n) {
+  height: 15rem !important;
+  width: 12rem !important;
+ }
 </style>

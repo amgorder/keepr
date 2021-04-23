@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-item">
+  <div class="grid-item col col-md-3">
     <div data-toggle="modal" :data-target="'#keep-'+keepProp.id" class="keepComponent card text-light h-100 w-100 " :style="{ backgroundImage: `url('${keepProp.img}')`, backgroundSize: 'cover' , backgroundRepeat: 'no-repeat'}">
       <h3>
         {{ keepProp.name }}
