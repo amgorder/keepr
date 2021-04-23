@@ -22,10 +22,24 @@ namespace keepr_server.Services
 
 
 
-        internal void Delete(int id)
+        internal void Delete(int id, string userId)
         {
-            //NOTE getbyid to validate its valid and you are the creator
-            _vkrepo.Delete(id);
+            // var data = _vkrepo.GetById(id);
+            // if (data == null)
+            // {
+
+            //     throw new Exception("Invalid Id");
+            // }
+            // if (data.CreatorId != userId)
+            // {
+
+            //     throw new Exception("You're not the owner.");
+            // }
+            int affected = _vkrepo.Delete(id, userId);
+            if (affected < 1)
+            {
+                throw new Exception("You're not the owner.");
+            }
         }
     }
 }

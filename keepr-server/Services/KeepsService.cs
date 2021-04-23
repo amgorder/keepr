@@ -9,10 +9,12 @@ namespace keepr_server.Services
     public class KeepsService
     {
         private readonly KeepsRepository _repo;
+        private readonly VaultsService _vserv;
 
-        public KeepsService(KeepsRepository repo)
+        public KeepsService(KeepsRepository repo, VaultsService vserv)
         {
             _repo = repo;
+            _vserv = vserv;
         }
 
         internal IEnumerable<Keep> GetAll()
@@ -69,10 +71,13 @@ namespace keepr_server.Services
             return _repo.GetByCreatorId(id);
         }
 
-        internal IEnumerable<VaultKeepViewModel> GetKeepsByVaultId(int id)
+        internal IEnumerable<VaultKeepViewModel> GetKeepsByVaultId(int id, string userId)
         {
+            _vserv.GetById(id, userId);
             return _repo.GetKeepsByVaultId(id);
         }
+
+
         internal List<Keep> GetKeepsByProfileId(string id)
         {
             var keeps = _repo.GetByProfileId(id);

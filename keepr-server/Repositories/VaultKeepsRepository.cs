@@ -13,7 +13,7 @@ namespace keepr_server.Repositories
         }
         internal VaultKeep Create(VaultKeep newVK)
         {
-            string sql = @"
+            string sql = @"UPDATE keeps k SET k.keeps = k.keeps + 1 WHERE id = @KeepId;
       INSERT INTO vaultkeeps 
       (keepId, vaultId, creatorId) 
       VALUES 
@@ -24,10 +24,10 @@ namespace keepr_server.Repositories
             return newVK;
         }
 
-        internal void Delete(int id)
+        internal int Delete(int id, string userId)
         {
-            string sql = "DELETE FROM vaultkeeps WHERE id = @id LIMIT 1;";
-            _db.Execute(sql, new { id });
+            string sql = "DELETE FROM vaultkeeps WHERE id = @id AND creatorId = @userId LIMIT 1;";
+            return _db.Execute(sql, new { id, userId });
 
         }
     }

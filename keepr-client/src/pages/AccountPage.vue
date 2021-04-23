@@ -81,7 +81,7 @@
                 <input class="m-3" type="text" v-model="state.newVault.description" placeholder="Enter a description">
 
                 <label class="btn">
-                  <input type="checkbox" autocomplete="off"> Public
+                  <input type="checkbox" v-model="state.newVault.isPrivate"> Private
                 </label>
                 <button type="submit" class="btn btn-primary">
                   Create Vault

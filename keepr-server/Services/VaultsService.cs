@@ -20,12 +20,18 @@ namespace keepr_server.Services
             return _repo.GetAll();
         }
 
-        internal Vault GetById(int id)
+        internal Vault GetById(int id, string userId)
         {
             var data = _repo.GetById(id);
             if (data == null)
             {
+
                 throw new Exception("Invalid Id");
+            }
+            if (data.CreatorId != userId && data.IsPrivate)
+            {
+
+                throw new Exception("This is private and youre not the owner.");
             }
             return data;
         }
@@ -37,7 +43,7 @@ namespace keepr_server.Services
         }
         internal Vault Edit(Vault updated)
         {
-            var original = GetById(updated.Id);
+            var original = GetById(updated.Id, updated.CreatorId);
             if (original.CreatorId != updated.CreatorId)
             {
                 throw new Exception("Invalid Edit Permissions");
@@ -53,7 +59,7 @@ namespace keepr_server.Services
 
         internal string Delete(int id, string userId)
         {
-            var original = GetById(id);
+            var original = GetById(id, userId);
             if (original.CreatorId != userId)
             {
                 throw new Exception("Invalid Delete Permissions");
@@ -65,7 +71,7 @@ namespace keepr_server.Services
         internal List<Vault> GetVaultsByProfileId(string id)
         {
             var vaults = _repo.GetByProfileId(id);
-            return vaults.FindAll(v => v.IsPrivate);
+            return vaults.FindAll(v => !v.IsPrivate);
         }
 
         internal IEnumerable<Vault> GetVaultsByAccountId(string id)
