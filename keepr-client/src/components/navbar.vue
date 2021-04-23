@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg color">
+  <nav class="navbar navbar-expand-lg toggle">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <!-- <img
@@ -105,6 +105,9 @@ export default {
 <style scoped>
 .color{
   background: hsl(150, 99%, 48%);
+}
+.toggle{
+  background: hsla(275, 99%, 48%, 0.74);
 }
 .dropdown-menu {
   user-select: none;

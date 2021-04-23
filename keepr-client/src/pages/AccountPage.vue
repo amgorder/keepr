@@ -103,7 +103,7 @@
       </div>
     </div>
     <br>
-    <div class="row">
+    <div class="grid">
       <h1>VAULTS</h1>
       <vault-component v-for="v in state.vaults" :key="v.id" :vault-prop="v" class="vault-component" />
     </div>
@@ -267,4 +267,18 @@ img {
   height: 15rem !important;
   width: 12rem !important;
  }
+
+ .vault-component {
+  height: 10rem;
+  width: 12rem;
+  padding: 3px;
+  margin: 3px;
+  display: inline-block;
+ }
+
+/* .vault-component:nth-child(2n) {
+  height: 20rem !important;
+  width: 12rem !important;
+ } */
+
 </style>

@@ -1,4 +1,7 @@
 USE keeprvault333;
+
+-- SET FOREIGN_KEY_CHECKS=0;
+-- TRUNCATE TABLE keeps;
 -- TRUNCATE TABLE vaults;
 -- DROP TABLE vaults;
 

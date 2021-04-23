@@ -2,11 +2,11 @@
   <header>
     <Navbar />
   </header>
-  <main>
+  <main class="color">
     <router-view />
   </main>
   <footer>
-    <div class="text-center p-4">
+    <div class="text-center p-4 toggle text">
       ...stay golden
     </div>
   </footer>
@@ -26,13 +26,15 @@ export default {
 </script>
 <style lang="scss">
 .color{
-  background: hsl(150, 99%, 48%);
+  background: hsla(150, 99%, 48%, 0.301);
 }
 
 .text{
   color: hsl(50, 99%, 48%);
 }
-
+.toggle{
+  background: hsla(275, 99%, 48%, 0.74);
+}
 @import "./assets/scss/main.scss";
 
 .border-wrap{
