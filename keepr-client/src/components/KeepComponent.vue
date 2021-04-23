@@ -51,6 +51,9 @@
             </div>
           </div>
           <div class="modal-footer">
+            remove from vault
+            <i class="fa fa-trash text-danger" data-dismiss="modal" @click="deleteVaultKeep" v-if="keepProp.creatorId == state.account.id" aria-hidden="true"></i>
+
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle"
                       type="button"
@@ -59,7 +62,7 @@
                       aria-haspopup="true"
                       aria-expanded="false"
               >
-                Dropdown button
+                Add to Vault
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="#" @click="createVaultKeep( keepProp.id, v.id)" v-for="v in state.vaults" :key="v.id">{{ v.name }}</a>
@@ -107,7 +110,12 @@ export default {
         }
         console.log(newVK)
         keepsService.createVaultKeep(newVK)
+      },
+      deleteVaultKeep() {
+        confirm('Are you sure?')
+        keepsService.deleteVaultKeep(props.keepProp.vaultKeepId)
       }
+
     }
   }
 }
@@ -115,18 +123,6 @@ export default {
 </script>
 
 <style>
-/* .grid-item { width: 100px; } */
-
-/* .card {
-  width: 200px;
-
-  padding: 3px;
-  margin: 3px;
-} */
-
-/* .bg-img{
-  background-image: url("keepProp.img");
-} */
 
 .pic{
   display: inline-block;
@@ -140,11 +136,6 @@ export default {
   height:25px;
   box-shadow: 6px,6px,12px,16px black;
 }
-
-/* .round{
-  border-color: hsl(44, 98%, 25%);
-  border-radius: 5px;
-} */
 
 .border-wrap{
   text-decoration: none;

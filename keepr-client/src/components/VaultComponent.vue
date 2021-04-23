@@ -59,8 +59,8 @@ export default {
   object-fit: cover;
   margin: auto;
   border-radius: 50%;
-  width: 50px;
-  height:50px;
+  width: 35px;
+  height:35px;
   box-shadow: 6px,6px,12px,16px black;
 }
 </style>
