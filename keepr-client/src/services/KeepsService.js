@@ -46,5 +46,17 @@ class KeepsService {
     const keepIndex = AppState.keeps.findIndex(k => k.id === keepId)
     AppState.keeps.splice(keepIndex, 1)
   }
+
+  async createVaultKeep(newVK) {
+    const res = await api.post('api/vaultkeeps', newVK)
+    console.log(res)
+    AppState.vaultkeeps = [res.data, ...AppState.vaultkeeps]
+  }
+
+  async getVaultKeeps(id) {
+    const res = await api.get('api/vaults/' + id + '/keeps')
+    console.log(res)
+    AppState.vaultkeeps = res.data
+  }
 }
 export const keepsService = new KeepsService()

@@ -1,6 +1,6 @@
 <template>
   <div class="grid-item">
-    <router-link class="text-dark" :to="{name: 'VaultPage', params: {vaultId : vaultProp.id}}">
+    <router-link class="text-dark" :to="{name: 'VaultPage', params: {id : vaultProp.id}}">
       <div class="vaultComponent card text-dark h-100 w-100 " :style="{ backgroundImage: `url('${vaultProp.img}')`, backgroundSize: 'cover' , backgroundRepeat: 'no-repeat'}">
         <h3>
           {{ vaultProp.name }}
@@ -55,7 +55,7 @@ export default {
   display: inline-block;
   padding: 4px;
 
-  background: linear-gradient(130deg,  hsl(150, 99%, 48%), hsl(150, 99%, 48%));
+  background: linear-gradient(130deg,  #d4af37, #d4af37);
   object-fit: cover;
   margin: auto;
   border-radius: 50%;

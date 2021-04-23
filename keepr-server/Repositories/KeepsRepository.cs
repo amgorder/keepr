@@ -86,11 +86,18 @@ namespace keepr_server.Repositories
         {
             string sql = @"SELECT 
           k.*,
-          vk.id AS VaultKeepId
+          vk.id AS VaultKeepId,
+          prof.*
           FROM vaultkeeps vk
           JOIN keeps k ON k.id = vk.keepId
-          WHERE vaultId = @id;";
-            return _db.Query<VaultKeepViewModel>(sql, new { id });
+          JOIN profiles prof ON vk.creatorId = prof.id
+          WHERE vk.vaultId = @id;";
+            // return _db.Query<VaultKeepViewModel>(sql, new { id });
+            return _db.Query<VaultKeepViewModel, Profile, VaultKeepViewModel>(sql, (keep, profile) =>
+           {
+               keep.Creator = profile;
+               return keep;
+           }, new { id }, splitOn: "id");
         }
 
         internal List<Keep> GetByProfileId(string id)

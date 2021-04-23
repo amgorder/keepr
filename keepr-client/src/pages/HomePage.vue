@@ -1,5 +1,5 @@
 <template>
-  <div class="grid" data-masonry="{ itemSelector: &quot;.grid-item&quot;, &quot;columnWidth&quot;: 200 }">
+  <div class="masonryholder">
     <keep-component v-for="k in state.keeps" :key="k.id" :keep-prop="k" class="keep-component" />
   </div>
 </template>
@@ -31,17 +31,42 @@ export default {
   display: inline-block;
  }
 
-.keep-component:nth-child(2n) {
-  height: 20rem !important;
-  width: 12rem !important;
- }
+// .keep-component:nth-child(2n) {
+//   height: 20rem !important;
+//   width: 12rem !important;
+//  }
 
-.keep-component:nth-child(3n) {
-  height: 18rem !important;
-  width: 12rem !important;
- }
-.keep-component:nth-child(4n) {
-  height: 15rem !important;
-  width: 12rem !important;
- }
+// .keep-component:nth-child(3n) {
+//   height: 18rem !important;
+//   width: 12rem !important;
+//  }
+// .keep-component:nth-child(4n) {
+//   height: 15rem !important;
+//   width: 12rem !important;
+//  }
+//  .masonryholder{
+//   column-count: 4;
+//   column-gap: 20px;
+// }
+
+// @media screen and (max-width: 768px){
+// .masonryholder{
+//   column-count: 1;
+// }
+// }
+// @media screen and (min-width: 769px){
+// .masonryholder{
+//   column-count: 2;
+// }
+// }
+// @media screen and (min-width: 1080px){
+// .masonryholder{
+//   column-count: 3;
+// }
+// }
+// @media screen and (min-width: 1200px){
+// .masonryholder{
+//   column-count: 4;
+// }
+// }
 </style>

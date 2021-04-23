@@ -1,5 +1,5 @@
 <template>
-  <div class="ProfilePage container-fluid">
+  <div class="ProfilePage container-fluid text-light">
     <div class="row">
       <!-- <div class="col" v-if="state.loading"></div> -->
       <div class="col" v-if="!state.loading && state.profile.name">
@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="row">
-      <keep-component class="keep-component" v-for="k in state.keeps" :key="k.id" :keep-prop="k" />
+      <keep-component class="keep-component d-flex" v-for="k in state.keeps" :key="k.id" :keep-prop="k" />
     </div>
   </div>
 </template>
