@@ -9,11 +9,7 @@
     <div class="row">
       <!-- Button trigger modal -->
 
-      <button type="button" class="btn border-wrap d-flex ml-1" data-toggle="modal" data-target="#keepModalCenter">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+      <button type="button" class="btn text-light border-wrap ml-1" data-toggle="modal" data-target="#keepModalCenter">
         + KEEP
       </button>
 
@@ -28,7 +24,7 @@
         <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="keepModalLongTitle">
+              <h5 class="modal-title text-dark" id="keepModalLongTitle">
                 New Keep:
               </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -56,11 +52,7 @@
 
       <!-- Button trigger modal -->
       <div>
-        <button type="button" class="btn border-wrap d-flex ml-1" data-toggle="modal" data-target="#vaultModalCenter">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+        <button type="button" class="btn text-light border-wrap d-flex ml-1" data-toggle="modal" data-target="#vaultModalCenter">
           + VAULT
         </button>
       </div>
@@ -76,7 +68,7 @@
         <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="vaultModalLongTitle">
+              <h5 class="modal-title text-dark" id="vaultModalLongTitle">
                 New Vault:
               </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -193,9 +185,9 @@ img {
 }
 
 .border-wrap:hover{
-  color: hsl(275, 99%, 48%);
-  background: hsl(150, 99%, 48%);
-  box-shadow: 0 0 10px hsl(150, 99%, 48%), 0 0 40px hsl(150, 99%, 48%), 0 0 80px hsl(150, 99%, 48%);
+  color: #d4af37;
+  background: #d4af37;
+  box-shadow: 0 0 10px #d4af37, 0 0 40px #d4af37, 0 0 80px #d4af37;
   transition-delay: 1s;
 
 }
@@ -208,7 +200,7 @@ img {
   left: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg,transparent,hsl(275, 99%, 48%));
+  background: linear-gradient(90deg,transparent,#d4af37);
 }
 .border-wrap:hover span:nth-child(1){
   left: 100%;
@@ -219,7 +211,7 @@ img {
   right: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(270deg,transparent,hsl(275, 99%, 48%));
+  background: linear-gradient(270deg,transparent,#d4af37);
 }
 .border-wrap:hover span:nth-child(3){
   right: 100%;
@@ -232,7 +224,7 @@ img {
   right: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg,transparent,hsl(275, 99%, 48%));
+  background: linear-gradient(180deg,transparent,#d4af37);
 }
 .border-wrap:hover span:nth-child(2){
   top: 100%;
@@ -244,7 +236,7 @@ img {
   left: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(360deg,transparent,hsl(275, 99%, 48%));
+  background: linear-gradient(360deg,transparent,#d4af37);
 }
 .border-wrap:hover span:nth-child(4){
   bottom: 100%;

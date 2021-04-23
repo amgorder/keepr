@@ -30,7 +30,7 @@ export default {
 }
 
 .text{
-  color: hsl(46, 65%, 52%);
+  color: hsl(44, 17%, 22%);
 }
 .toggle{
   background:  #d4af37;
