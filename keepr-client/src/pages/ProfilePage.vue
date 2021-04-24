@@ -5,9 +5,20 @@
       <div class="col" v-if="!state.loading && state.profile.name">
         <h1>Welcome to {{ state.profile.name.includes('@') ? state.profile.name.split('@')[0] : state.profile.name }}'s Page </h1>
         <img :src="state.profile.picture" alt="">
+        <h1>KEEPS COUNT: {{ state.keeps.length }}</h1>
+        <h1>VAULTS COUNT: {{ state.vaults.length }}</h1>
       </div>
     </div>
     <div class="row">
+      <h1 class="col-12">
+        VAULTS
+      </h1>
+      <vault-component v-for="v in state.vaults" :key="v.id" :vault-prop="v" class="vault-component" />
+    </div>
+    <div class="row">
+      <h1 class="col-12">
+        KEEPS
+      </h1>
       <keep-component class="keep-component d-flex" v-for="k in state.keeps" :key="k.id" :keep-prop="k" />
     </div>
   </div>
@@ -26,7 +37,9 @@ export default {
     const state = reactive({
       loading: true,
       profile: computed(() => AppState.profile),
-      keeps: computed(() => AppState.keeps)
+      keeps: computed(() => AppState.keeps),
+      vaults: computed(() => AppState.vaults)
+
     })
     onMounted(() => {
       profilesService.getProfileById(route.params.id)
