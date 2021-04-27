@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg toggle">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <!-- <img
+        <h1>Kr</h1><!-- <img
           alt="logo"
           src="../assets/img/cw-logo.png"
           height="45"
