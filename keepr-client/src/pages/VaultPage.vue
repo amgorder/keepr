@@ -2,13 +2,14 @@
   <div class="Vault-Page text-light">
     <h1>Vault Title</h1>
     <p>
-      number of Keeps
-
-      delete vault button that removes all keeps
-      <i class="fa fa-trash text-danger" @click="deleteVault" v-if="state.vault.creatorId == state.account.id" aria-hidden="true"></i>
-
-      Keep-component
+      number of Keeps {{ state.keeps.length }}
     </p>
+    <h2>
+      Delete VAULT?
+      <i class="fa fa-trash text-danger" @click="deleteVault" v-if="state.vault.creatorId == state.account.id" aria-hidden="true"></i>
+    </h2>
+
+    <h1> Keeps:</h1>
     <keep-component class="keep-component d-flex" v-for="k in state.keeps" :key="k.id" :keep-prop="k" />
   </div>
 </template>
