@@ -1,12 +1,12 @@
 <template>
   <div class="Vault-Page text-light">
-    <h1>Vault Title</h1>
+    <h1>{{ state.vault.name }}</h1>
     <p>
       number of Keeps {{ state.keeps.length }}
     </p>
     <h2>
       Delete VAULT?
-      <i class="fa fa-trash text-danger" @click="deleteVault" v-if="state.vault.creatorId == state.account.id" aria-hidden="true"></i>
+      <i class="fa fa-trash text-danger pointer" @click="deleteVault" v-if="state.vault.creatorId == state.account.id" aria-hidden="true"></i>
     </h2>
 
     <h1> Keeps:</h1>
@@ -50,4 +50,7 @@ export default {
 
 <style lang="scss" scoped>
 
+.pointer {
+  cursor: crosshair;
+  }
 </style>
